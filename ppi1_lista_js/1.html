@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que é JavaScript?</title>
+</head>
+<body>
+    <h1  id="titulo">O que é JavaScript?</h1>
+    <p>
+        JavaScript surgiu em 1995 pelas mãos de Brendan Eich na Netscape para transformar páginas HTML estáticas em experiências interativas, sem precisar de plugins externos. No navegador, o código roda diretamente no motor de JavaScript embutido (como V8 ou SpiderMonkey) e interage com o DOM e APIs web; já no servidor, com ambientes como Node.js, ele é executado pelo mesmo motor, mas num contexto sem DOM, oferecendo acesso a recursos de sistema, rede e módulos de servidor. Para garantir segurança, os navegadores isolam cada script em um sandbox — um ambiente restrito que impede acesso indevido a arquivos ou dados de outras abas, configurável por iframes ou políticas de segurança. Dentro desse contexto global do browser, existem objetos como document, que representa a estrutura da página e permite sua manipulação; console, que registra mensagens e ajuda na depuração; e alert, que exibe caixas de diálogo simples para comunicação imediata com o usuário.
+    </p>
+    <div id="relogio"></div>
+    <script>
+        alert("Bem vindo a esta pagina")
+
+        console.log("Mensagem registrada pelo console.log.")
+
+        var relogio = document.getElementById("relogio")
+
+        function mostraHora() {
+
+        var data = new Date(),
+        hora =  data.getHours(), 
+        minuto = data.getMinutes(),
+        segundos = data.getSeconds() <= 9 ? "0"+data.getSeconds() : data.getSeconds() 
+
+        relogio.innerHTML = `${hora}:${minuto}:${segundos}`
+        }
+
+        setInterval(mostraHora, 1000)
+    </script>
+</body>
+</html>
