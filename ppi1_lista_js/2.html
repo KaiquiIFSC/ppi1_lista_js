@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <button id="botao" onclick="mostrarOperacoes()">Clique em mim</button>
+    
+    <h2>Tipos de Variáveis</h2>
+    <p id="pstring"></p>
+    <p id="pnumber"></p>
+    <p id="pboolean"></p>
+    <p id="pundefined"></p>
+    <p id="pnull"></p>
+    <p id="pobject"></p>
+    <p id="parray"></p>
+  
+    <h2>Operações entre tipos</h2>
+    <p id="pop1"></p>
+    <p id="pop2"></p>
+    <p id="pop3"></p>
+    <p id="pop4"></p>
+  
+    
+    <script>
+
+        function mostrarOperacoes(){
+            var minhaString = "Olá";
+            var meuNumero = 10;
+            var meuBoolean = false;
+            var meuUndefined;
+            var meuNull = null;
+            var meuObjeto = {nome: "João"};
+            var meuArray = [1, 2, 3];
+
+            document.getElementById("pstring").innerText    = `string: ${typeof minhaString}`;
+            document.getElementById("pnumber").innerText    = `number: ${typeof meuNumero}`;
+            document.getElementById("pboolean").innerText   = `boolean: ${typeof meuBoolean}`;
+            document.getElementById("pundefined").innerText = `undefined: ${typeof meuUndefined}`;
+            document.getElementById("pnull").innerText      = `null: ${typeof meuNull}`;
+            document.getElementById("pobject").innerText    = `object: ${typeof meuObjeto}`;
+            document.getElementById("parray").innerText     = `array: ${typeof meuArray}`;
+
+            let op1 = minhaString + meuNumero;
+            console.log("string + number =", op1);
+            document.getElementById("pop1").innerText = 
+                `string + number = "${op1}" → concatena número à string.`;
+
+            let op2 = meuBoolean * meuNumero;
+            console.log("boolean * number =", op2);
+            document.getElementById("pop2").innerText = 
+                `boolean * number = ${op2} → boolean é convertido para 0 (false) ou 1 (true).`;
+
+            let op3 = meuNull + meuNumero;
+            console.log("null + number =", op3);
+            document.getElementById("pop3").innerText = 
+                `null + number = ${op3} → null vira 0 quando usado em operações aritméticas.`;
+
+            let op4 = meuUndefined + meuNumero;
+            console.log("undefined + number =", op4);
+            document.getElementById("pop4").innerText = 
+                `undefined + number = ${op4} → undefined gera NaN (not a number).`;
+        }
+    </script>
+</body>
+</html>
