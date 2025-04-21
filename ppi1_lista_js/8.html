@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Espaço Muda Cores</title>
+</head>
+<body>
+  <h1 class="color-change">Pressione Espaço</h1>
+  <p class="color-change">Este parágrafo muda de cor.</p>
+  <button class="color-change">Botão</button>
+
+  <script>
+    function corAleatoria() {
+      return '#' + Math.floor(Math.random()*0xFFFFFF).toString(16).padStart(6, '0');
+    }
+
+    window.addEventListener('keydown', e => {
+      if (e.code === 'Space') {
+        document.querySelectorAll('.color-change').forEach(el => {
+          el.style.backgroundColor = corAleatoria();
+          el.style.color = corAleatoria();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

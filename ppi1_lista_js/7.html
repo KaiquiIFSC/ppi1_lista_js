@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cor Aleatória</title>
+</head>
+<body>
+  <h1>Mudar Cor de Fundo com Clique</h1>
+  <button id="btnCor">Mudar Cor de Fundo</button>
+
+  <script>
+    function corAleatoria() {
+      return '#' + Math.floor(Math.random()*0xFFFFFF).toString(16).padStart(6, '0');
+    }
+
+    document.getElementById('btnCor')
+      .addEventListener('click', () => {
+        document.body.style.backgroundColor = corAleatoria();
+      });
+  </script>
+</body>
+</html>

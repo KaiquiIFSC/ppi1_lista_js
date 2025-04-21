@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Primos no Intervalo</title>
+</head>
+<body>
+  <h1>Números Primos</h1>
+  <input type="number" id="inicio" placeholder="Início">
+  <input type="number" id="fim" placeholder="Fim">
+  <button id="btnPrimos">Verificar</button>
+  <div id="resultadoPrimos"></div>
+
+  <script>
+    function isPrime(n) {
+      if (n < 2) return false;
+      for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return false;
+      }
+      return true;
+    }
+
+    function listarPrimos() {
+      const ini = parseInt(document.getElementById('inicio').value, 10);
+      const fim = parseInt(document.getElementById('fim').value, 10);
+      if (isNaN(ini) || isNaN(fim) || ini > fim) {
+        alert('Intervalo inválido!');
+        return;
+      }
+      const primos = [];
+      for (let n = ini; n <= fim; n++) {
+        if (isPrime(n)) primos.push(n);
+      }
+      document.getElementById('resultadoPrimos')
+        .innerText = primos.length
+          ? `Primos: ${primos.join(', ')}`
+          : 'Nenhum primo encontrado.';
+    }
+
+    document.getElementById('btnPrimos')
+      .addEventListener('click', listarPrimos);
+  </script>
+</body>
+</html>
