@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,14 +15,13 @@
     <button onclick="calcularIMC()">Calcular IMC</button>
     <p id="resultadoIMC"></p>
     <p id="classificacao"></p>
-    <img id="imgPerfil">
+    <img id="imgPerfil" width="200">
 
     <script>
-        let nome = document.getElementById("nome");
-        let altura = document.getElementById("altura");
-        let peso = document.getElementById("peso");
-
-        function calcularIMC(){
+        function calcularIMC() {
+            let nome = document.getElementById("nome");
+            let altura = document.getElementById("altura");
+            let peso = document.getElementById("peso");
 
             let valorPeso = parseFloat(peso.value);
             let valorAltura = parseFloat(altura.value);
@@ -32,8 +31,7 @@
                 return;
             }
 
-            var IMC = peso / (altura * altura);
-
+            let imc = valorPeso / (valorAltura * valorAltura);
             let classificacao = "";
 
             if (imc < 18.5) {
@@ -49,32 +47,32 @@
             } else {
                 classificacao = "Obesidade grau 3 (mórbida)";
             }
-        }
 
-        document.getElementById("resultadoIMC").textContent = `IMC: ${imc.toFixed(2)}`;
+            document.getElementById("resultadoIMC").textContent = `IMC: ${imc.toFixed(2)}`;
             document.getElementById("classificacao").textContent = `Classificação: ${classificacao}`;
 
             let img = document.getElementById("imgPerfil");
 
             switch (true) {
                 case imc < 18.5:
-                    img.src = "magro.png";
+                    img.src = "imgs/magro.png";
                     break;
                 case imc < 24.9:
-                    img.src = "normal.png";
+                    img.src = "imgs/normal.png";
                     break;
                 case imc < 29.9:
-                    img.src = "sobrepeso.png";
+                    img.src = "imgs/sobrepeso.png";
                     break;
                 case imc < 34.9:
-                    img.src = "obesidade1.png";
+                    img.src = "imgs/obesidade1.png";
                     break;
                 case imc < 39.9:
-                    img.src = "obesidade2.png";
+                    img.src = "imgs/obesidade2.png";
                     break;
                 default:
-                    img.src = "obesidade3.png";
+                    img.src = "imgs/obesidade3.png";
             }
+        }
     </script>
 </body>
 </html>

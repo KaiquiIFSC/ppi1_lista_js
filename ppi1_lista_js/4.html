@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sorteio de Números</title>
+</head>
+<body>
+  <h1>Sorteio de Números</h1>
+  <label>Min: <input type="number" id="min" value="1"></label>
+  <label>Max: <input type="number" id="max" value="100"></label>
+  <button id="btnSortear">Sortear</button>
+  <p id="ultimoResultado"></p>
+  <ul id="historico"></ul>
+  <script>
+    const historicos = []; 
+
+    function sortear() {
+    const min = parseInt(document.getElementById('min').value, 10);
+    const max = parseInt(document.getElementById('max').value, 10);
+    if (isNaN(min) || isNaN(max) || min > max) {
+        alert('Intervalo inválido!');
+        return;
+    }
+    const num = Math.floor(Math.random() * (max - min + 1)) + min;
+    let registro = historicos.find(h => h.valor === num);
+    if (registro) {
+        registro.count++;
+    } else {
+        registro = { valor: num, count: 1 };
+        historicos.push(registro);
+    }
+    document.getElementById('ultimoResultado').innerText = `Último sorteio: ${num}`;
+    atualizarHistorico();
+    }
+
+    function atualizarHistorico() {
+    const ul = document.getElementById('historico');
+    ul.innerHTML = '';
+    historicos.forEach(h => {
+        const li = document.createElement('li');
+        li.innerText = h.count > 1
+        ? `${h.valor} (saiu ${h.count} vezes)`
+        : `${h.valor}`;
+        ul.appendChild(li);
+    });
+    }
+
+    document.getElementById('btnSortear')
+    .addEventListener('click', sortear);
+  </script>
+</body>
+</html>
